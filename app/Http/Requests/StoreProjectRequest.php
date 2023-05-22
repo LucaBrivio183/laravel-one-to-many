@@ -25,6 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'type_id' => 'nullable|exists:types,id',
             'major_version' => 'required',
             'minor_version' => 'required',
             'patch_version' => 'required',

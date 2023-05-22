@@ -11,6 +11,13 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text">Project name</span>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name',$project->name) }}">
+                    <span class="input-group-text">Type</span>
+                    <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+                        <option value="">Select type</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->type_name }}</option>
+                        @endforeach
+                    </select>
                     <span class="input-group-text">Version</span>
                     <input type="number" class="form-control @error('major_version') is-invalid @enderror" id="major_version" name="major_version" value="{{ old('major_version',$project->major_version) }}">
                     <input type="number" class="form-control @error('minor_version') is-invalid @enderror" id="minor_version" name="minor_version" value="{{ old('minor_version',$project->minor_version) }}">
@@ -26,6 +33,9 @@
                         <div class="alert alert-danger">{{ $message }} </div>
                     @enderror
                     @error('patch_version')
+                        <div class="alert alert-danger">{{ $message }} </div>
+                    @enderror
+                    @error('type_id')
                         <div class="alert alert-danger">{{ $message }} </div>
                     @enderror
                 {{-- switch for manage project image--}}

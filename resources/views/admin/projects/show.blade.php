@@ -21,7 +21,7 @@
             <small class="text-body-secondary">Version: {{ $project->major_version }}.{{ $project->minor_version }}.{{ $project->patch_version }}</small>
         </div> 
         <div class="h-50">
-            <img src="{{asset('storage/'. $project->image)}}" alt="{{ $project->name }}">
+            <img src="{{asset('storage/'. $project->image)}}" alt="{{ $project->name}}">
         </div>
         <h3>{{ $project->description }}</h3>
     </div>  
